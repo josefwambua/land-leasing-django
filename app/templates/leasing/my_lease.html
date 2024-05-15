@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mt-5">
+    <h1>My Leases</h1>
+    <ul class="list-group">
+        {% for lease in leases %}
+            <li class="list-group-item">
+                {{ lease.land.location }}: {{ lease.start_date }} to {{ lease.end_date }} ({{ lease.approved|yesno:"Approved,Pending" }})
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mt-5">
+    <h1>My Lands and Leases</h1>
+    <h3>Lands</h3>
+    <ul class="list-group">
+        {% for land in lands %}
+            <li class="list-group-item">{{ land.location }} - {{ land.size }} acres</li>
+        {% endfor %}
+    </ul>
+    <h3>Lease Requests</h3>
+    <ul class="list-group">
+        {% for lease in leases %}
+            <li class="list-group-item">
+                {{ lease.land.location }}: {{ lease.start_date }} to {{ lease.end_date }}
+                {% if not lease.approved %}
+                    <a href="{% url 'approve_lease' lease.id %}" class="btn btn-success">Approve</a>
+                {% else %}
+                    Approved
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

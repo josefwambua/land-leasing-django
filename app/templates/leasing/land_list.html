@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mt-5">
+    <h1>Available Lands</h1>
+    <ul class="list-group">
+        {% for land in lands %}
+            <li class="list-group-item">
+                <a href="{% url 'lease_land' land.id %}">{{ land.location }} - {{ land.size }} acres</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
